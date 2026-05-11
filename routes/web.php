@@ -19,20 +19,6 @@ Route::post('/register', [AuthController::class, 'register']);
 
 Route::get('/logout', [AuthController::class, 'logout']);
 
-/*
-|----------------------------------
-| AUTH DASHBOARD
-|----------------------------------
-*/
-
-
-
-/*
-|----------------------------------
-| ADMIN ROUTES (CLEAN)
-|----------------------------------
-*/
-
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
 
     // dashboard

@@ -30,9 +30,6 @@ public function create()
     return view('admin.postes.create', compact('users'));
 }
 
-    // =====================
-    // STORE POSTE
-    // =====================
 public function store(Request $request)
 {
     $request->validate([
@@ -41,7 +38,7 @@ public function store(Request $request)
         'etat' => 'required',
         'emplacement' => 'required',
         'user_id' => 'nullable|exists:users,id',
-    ]);
+    ]);           dd($request->numero_serie);
 
     Poste::create([
         'numero_serie' => $request->numero_serie,
@@ -53,20 +50,12 @@ public function store(Request $request)
 
     return redirect()->route('postes.index');
 }
-
-    // =====================
-    // EDIT FORM
-    // =====================
     public function edit(Poste $poste)
     {
         $postes = Poste::all();
 
         return view('postes.edit', compact('poste', 'postes'));
     }
-
-    // =====================
-    // UPDATE POSTE
-    // =====================
 public function update(Request $request, Poste $poste)
 {
     $poste->update([

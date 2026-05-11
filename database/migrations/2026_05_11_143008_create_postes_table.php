@@ -18,6 +18,7 @@ class PosteController extends Controller
     // CREATE PAGE
     public function create()
     {
+        dd("123");
         $users = User::all();
         return view('admin.postes.create', compact('users'));
     }
@@ -25,13 +26,7 @@ class PosteController extends Controller
     // STORE
     public function store(Request $request)
     {
-        $request->validate([
-            'numero_serie' => 'required|unique:postes',
-            'modele' => 'required',
-            'etat' => 'required',
-            'emplacement' => 'required',
-            'user_id' => 'nullable',
-        ]);
+        dd("123");
 
         Poste::create($request->all());
 
